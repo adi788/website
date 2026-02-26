@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Livestock Farm Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body>
+    <div id="loadingScreen">Connecting to farm system...</div>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="pig-logo" aria-hidden="true">
+                <svg class="pig-svg" viewBox="0 0 180 140">
+                    <ellipse cx="90" cy="75" rx="58" ry="46" class="pig-face"></ellipse>
+                    <polygon points="42,45 60,18 72,48" class="pig-ear pig-ear-left"></polygon>
+                    <polygon points="108,48 120,18 138,45" class="pig-ear pig-ear-right"></polygon>
+                    <circle cx="72" cy="68" r="7" class="pig-eye-white"></circle>
+                    <circle cx="108" cy="68" r="7" class="pig-eye-white"></circle>
+                    <circle cx="72" cy="68" r="3" class="pig-eye"></circle>
+                    <circle cx="108" cy="68" r="3" class="pig-eye"></circle>
+                    <ellipse cx="90" cy="92" rx="24" ry="16" class="pig-snout"></ellipse>
+                    <ellipse cx="82" cy="92" rx="4" ry="6" class="pig-nostril"></ellipse>
+                    <ellipse cx="98" cy="92" rx="4" ry="6" class="pig-nostril"></ellipse>
+                    <path d="M147 84 C165 80, 168 95, 154 100" class="pig-tail"></path>
+                </svg>
+            </div>
+            <div>
+                <h1>Smart Farm Control</h1>
+                <p class="subhead">Digital Twin Livestock Monitoring</p>
+            </div>
+        </div>
+        <div class="mqtt-status offline" id="mqttStatus">Offline</div>
+    </header>
+
+    <main class="main-content">
+        <section style="margin-top:16px;">
+    <button id="ledButton" class="led-btn">Turn ON Farm Lights</button>
+        </section>
+        <section class="hero">
+            <h2>Live Barn Conditions</h2>
+            <p>Track environment, utilities, and automation in one clean control panel.</p>
+        </section>
+
+        <section class="dashboard">
+            <div class="card safe">
+                <h3>Temperature</h3>
+                <p class="value" id="temperature">-- C</p>
+            </div>
+            <div class="card safe">
+                <h3>Ammonia</h3>
+                <p class="value" id="ammonia">-- ppm</p>
+            </div>
+            <div class="card safe">
+                <h3>Load</h3>
+                <p class="value" id="load">-- kg</p>
+            </div>
+            <div class="card info">
+                <h3>Energy</h3>
+                <p class="value" id="energy">-- kWh</p>
+            </div>
+            <div class="card info">
+                <h3>Heater</h3>
+                <p class="value" id="heaterStatus">OFF</p>
+            </div>
+            <div class="card info">
+                <h3>Pump</h3>
+                <p class="value" id="pumpStatus">OFF</p>
+            </div>
+            <div class="card info">
+                <h3>Last Updated</h3>
+                <p class="value" id="lastUpdated">No data yet</p>
+            </div>
+        </section>
+
+        <section>
+            <div id="alertBox" class="alert safe">All systems normal</div>
+        </section>
+
+        <section class="farm-layout">
+            <div class="farm-block">Barn Zone <span class="status-dot safe"></span></div>
+            <div class="farm-block">Water Line <span class="status-dot safe"></span></div>
+            <div class="farm-block">Feed Storage <span class="status-dot warning"></span></div>
+            <div class="farm-block">Control Room <span class="status-dot safe"></span></div>
+            <div class="farm-block">Power Unit <span class="status-dot safe"></span></div>
+        </section>
+    </main>
+
+    <footer>
+        Digital Twin Smart Livestock System
+        <br>
+        Mini Project Team 3 | 2026
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
